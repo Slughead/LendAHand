@@ -1,0 +1,25 @@
+{
+    "name": "Lend A Hand",
+    "description": "Lending a hand to another - or get help",
+    "keywords": ["Lend a hand", "Help", "Friendly"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Klaus Ahrenst",
+            "email": "ahrenst@gmail.com",
+            "role": "Creator / Main Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "Example\\": "src/"
+        }
+    },
+	"config": {
+		"disable-tls": true,
+		"secure-http": false
+	}
+}
