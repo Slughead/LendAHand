@@ -1,6 +1,6 @@
 <?php
 
-namespace Example;
+namespace LendAHand;
 
 require __DIR__ . '/../vendor/autoload.php';
 
