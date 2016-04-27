@@ -3,9 +3,7 @@
 namespace LendAHand;
 
 return [
-    ['GET', '/hello-world', function () {
-        echo 'Hello World';
-    }],
+    ['GET', '/', ['LendAHand\Controllers\Homepage', 'show']],
     ['GET', '/another-route', function () {
         echo 'This works too';
     }],
