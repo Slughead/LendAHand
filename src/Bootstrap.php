@@ -29,17 +29,20 @@ $response = new \Http\HttpResponse();
 
 /**
  * Route handling
- * NOTE: This does not work with the current easyPHP installation/configuration, 
- *       but it does work with 'php -S localhost:8000' from the /public folder
  */
-$routeDefinitionCallback = function (\FastRoute\RouteCollector $r) {
+$routeDefinitionCallback = function (\FastRoute\RouteCollector $routeCollector) {
     $routes = include_once('Routes.php');
     foreach ($routes as $route) {
-        $r->addRoute($route[0], $route[1], $route[2]);
+        $routeCollector->addRoute($route[0], $route[1], $route[2]);
     }
 };
+
+// relative path is just for developing, methinks..!
+$relativePath = substr($request->getPath(), 21);
 $dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
-$routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
+$routeInfo = $dispatcher->dispatch($request->getMethod(), $relativePath);
+// $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
+
 switch ($routeInfo[0]) {
     case \FastRoute\Dispatcher::NOT_FOUND:
         $response->setContent('404 - Page not found');

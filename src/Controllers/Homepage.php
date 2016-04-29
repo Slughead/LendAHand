@@ -9,7 +9,7 @@ class Homepage {
 	private $response;
 	
 	public function __construct(Response $response) {
-		$this->response = $reponse;
+		$this->response = $response;
 	}
 	
 	public function show() {
