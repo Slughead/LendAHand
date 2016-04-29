@@ -22,10 +22,13 @@ if ($environment !== 'production') {
 $whoops->register();
 
 /**
- * HTTP handling, part 1 / 2
+ * HTTP handling, part 1 / 2, and creation of the DIC
  */
-$request = new \Http\HttpRequest($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
-$response = new \Http\HttpResponse();
+$injector = include_once('Dependencies.php');
+$request = $injector->make('Http\HttpRequest'); // shouldn't this just be Http\Request due to the alias?
+$response = $injector->make('Http\HttpResponse'); // likewise here...
+// $request = new \Http\HttpRequest($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
+// $response = new \Http\HttpResponse();
 
 /**
  * Route handling
@@ -56,7 +59,7 @@ switch ($routeInfo[0]) {
 		$className = $routeInfo[1][0];
 		$method = $routeInfo[1][1];
 		$vars = $routeInfo[2];
-		$class = new $className($response);
+		$class = $injector->make($className);
 		$class->$method($vars);
 		break;
 	default:

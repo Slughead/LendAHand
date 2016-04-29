@@ -1,8 +1,5 @@
 <?php
-
-/*
 $injector = new \Auryn\Injector();
-
 $injector->alias('Http\Request', 'Http\HttpRequest');
 $injector->share('Http\HttpRequest');
 $injector->define('Http\HttpRequest', [
@@ -15,5 +12,3 @@ $injector->define('Http\HttpRequest', [
 $injector->alias('Http\Response', 'Http\HttpResponse');
 $injector->share('Http\HttpResponse');
 return $injector;
-
-*/
