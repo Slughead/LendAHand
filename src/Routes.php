@@ -7,4 +7,5 @@ return [
     ['GET', '/another-route', function () {
         echo 'This works too';
     }],
+	['GET', '/{slug}', ['LendAHand\Controllers\Page', 'show']],
 ];

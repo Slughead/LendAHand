@@ -19,4 +19,10 @@ $injector->define('Mustache_Engine', [
 		]),
 	],
 ]); 
+$injector->define('LendAHand\Page\FilePageReader', [
+    ':pageFolder' => __DIR__ . '/../pages',
+]);
+
+$injector->alias('LendAHand\Page\PageReader', 'LendAHand\Page\FilePageReader');
+$injector->share('LendAHand\Page\FilePageReader');
 return $injector;
