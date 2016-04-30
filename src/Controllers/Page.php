@@ -5,6 +5,7 @@ namespace LendAHand\Controllers;
 use \Http\Response;
 use \LendAHand\Template\Renderer;
 use \LendAHand\Page\PageReader;
+use \LendAHand\Page\InvalidPageException;
 
 class Page {
 	
@@ -24,7 +25,12 @@ class Page {
 	
     public function show($params) {
 		$slug = $params['slug'];
-		$data['content'] = $this->pageReader->readBySlug($slug);
+		try {
+			$data['content'] = $this->pageReader->readBySlug($slug);
+		} catch (InvalidPageException $e) {
+			$this->response->setStatusCode(404);
+			return $this->response->setContent('404 - Page not found');
+		}
 		$html = $this->renderer->render('Page', $data);
 		$this->response->setContent($html);
     }
