@@ -21,9 +21,9 @@ class Page {
 		$this->response = $response;
 		$this->renderer = $renderer;
 		$this->pageReader = $pageReader;
-    }
+	}
 	
-    public function show($params) {
+	public function show($params) {
 		$slug = $params['slug'];
 		try {
 			$data['content'] = $this->pageReader->readBySlug($slug);
@@ -33,5 +33,5 @@ class Page {
 		}
 		$html = $this->renderer->render('Page', $data);
 		$this->response->setContent($html);
-    }
+	}
 }
