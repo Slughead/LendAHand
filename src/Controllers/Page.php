@@ -3,7 +3,7 @@
 namespace LendAHand\Controllers;
 
 use \Http\Response;
-use \LendAHand\Template\Renderer;
+use \LendAHand\Template\FrontendRenderer;
 use \LendAHand\Page\PageReader;
 use \LendAHand\Page\InvalidPageException;
 
@@ -15,7 +15,7 @@ class Page {
 	
 	public function __construct(
 		Response $response,
-		Renderer $renderer,
+		FrontendRenderer $renderer,
 		PageReader $pageReader
 	) {
 		$this->response = $response;
