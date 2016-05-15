@@ -6,7 +6,11 @@ require __DIR__ . '/../vendor/autoload.php';
 
 error_reporting(E_ALL);
 
-$environment = 'development';
+$injector = include_once('Dependencies.php');
+// $injector->defineParam('env', 'production'); // use this when a production env should be used
+// $injector->defineParam('env', 'test'); // use this when a test env should be used
+$envHandler = $injector->make('LendAHand\Environment');
+$environment = $envHandler->getEnvironment();
 
 /**
 * Register the error handler
@@ -15,16 +19,16 @@ $whoops = new \Whoops\Run;
 if ($environment !== 'production') {
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 } else {
-    $whoops->pushHandler(function($e) {
-        echo 'Friendly error page and send an email to the developer'; //TODO!
-    });
+	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+    // $whoops->pushHandler(function($e) {
+        // echo 'Friendly error page and send an email to the developer'; //TODO!
+    // });
 }
 $whoops->register();
 
 /**
  * HTTP handling, part 1 / 2, and creation of the DIC
  */
-$injector = include_once('Dependencies.php');
 $request = $injector->make('Http\HttpRequest'); // shouldn't this just be Http\Request due to the alias?
 $response = $injector->make('Http\HttpResponse'); // likewise here...
 // $request = new \Http\HttpRequest($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
@@ -40,8 +44,12 @@ $routeDefinitionCallback = function (\FastRoute\RouteCollector $routeCollector) 
 	}
 };
 
-// relative path is just for developing, methinks..!
-$relativePath = substr($request->getPath(), 21);
+if ($environment !== 'production') {
+	$relativePath = substr($request->getPath(), 15);
+} else {
+	$relativePath = $request->getPath();
+}
+
 $dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $relativePath);
 // $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());

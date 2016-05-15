@@ -1,5 +1,6 @@
 <?php
 $injector = new \Auryn\Injector();
+$injector->share('LendAHand\Environment');
 $injector->alias('Http\Request', 'Http\HttpRequest');
 $injector->share('Http\HttpRequest');
 $injector->define('Http\HttpRequest', [
