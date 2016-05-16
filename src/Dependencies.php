@@ -1,5 +1,8 @@
 <?php
 $injector = new \Auryn\Injector();
+$injector->alias('LendAHand\Executor', 'LendAHand\Components\CommandExecutor');
+$injector->share('LendAHand\Executor');
+$injector->alias('LendAHand\Environment', 'LendAHand\Components\Environment');
 $injector->share('LendAHand\Environment');
 $injector->alias('Http\Request', 'Http\HttpRequest');
 $injector->share('Http\HttpRequest');

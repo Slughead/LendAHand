@@ -2,7 +2,7 @@
 
 namespace LendAHand\Menu;
 
-use \LendAHand\Environment;
+use \LendAHand\Components\Environment;
 
 class ArrayMenuReader implements MenuReader {
 	

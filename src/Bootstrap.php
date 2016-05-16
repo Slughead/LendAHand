@@ -6,6 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 error_reporting(E_ALL);
 
+include_once('Aliases.php');
 $injector = include_once('Dependencies.php');
 // $injector->defineParam('env', 'production'); // use this when a production env should be used
 // $injector->defineParam('env', 'test'); // use this when a test env should be used
@@ -25,6 +26,20 @@ if ($environment !== 'production') {
     // });
 }
 $whoops->register();
+
+/**
+ * Compile LESS if on develop
+ */
+if ($environment === 'development') {
+	$executor = $injector->make('LendAHand\Executor');
+	$lessFolder = __DIR__ . DS . 'Less' . DS;
+	$cssFolder = __DIR__ . DS . '..' . DS . 'public' . DS . 'css' . DS;
+	$cmd = 'lessc ' . $lessFolder . 'base.less ' . $cssFolder . 'style.min.css';
+	var_dump($cmd); die;
+	// $cmd should result in something like this:
+	// lessc D:\Programming\Projects\LendAHand\src\Less\base.less D:\Programming\Projects\LendAHand\src\..\public\css\style.min.css
+	$executor->runInBg($cmd);
+}
 
 /**
  * HTTP handling, part 1 / 2, and creation of the DIC

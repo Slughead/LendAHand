@@ -1,6 +1,6 @@
 <?php
 
-namespace LendAHand;
+namespace LendAHand\Components;
 
 /**
  * Simple environment class
