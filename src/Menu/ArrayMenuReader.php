@@ -27,8 +27,8 @@ class ArrayMenuReader implements MenuReader {
 				throw new \Exception('Unhandled environment!');
 		}
 		return [
-			// ['href' => '/edsa-Lend%20A%20Hand/', 'text' => 'Homepage'],
-			['href' => '/edsa-lendahand/', 'text' => 'Homepage'],
+			['href' => $basePath, 'text' => 'Homepage'],
+			['href' => $basePath . 'page-one', 'text' => 'Page One'],
 		];
 	}
 }
