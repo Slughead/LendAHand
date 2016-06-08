@@ -1,25 +1,25 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Example</title>
-        <link rel="stylesheet" href="/edsa-lendahand/css/style.min.css">
-    </head>
-    <body>
-        <div id="layout">
-            <nav id="menu">
+	<head>
+		<meta charset="utf-8">
+		<title>Example</title>
+		<link rel="stylesheet" href="/edsa-lendahand/css/style.min.css">
+	</head>
+	<body>
+		<div id="layout">
+			<nav id="menu">
 				<ul class="pure-menu-list">
 					{% for item in menuItems %}
 						<li class="pure-menu-item"><a href="{{ item['href'] }}" class="pure-menu-link">{{ item['text'] }}</a></li>
 					{% endfor %}
 				</ul>
-            </nav>
-            <div id="main">
-                <div class="content">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-    </body>
+			</nav>
+			<div id="main">
+				<div class="content">
+					{% block content %}
+					{% endblock %}
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

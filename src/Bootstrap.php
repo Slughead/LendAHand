@@ -21,9 +21,9 @@ if ($environment !== 'production') {
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 } else {
 	$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-    // $whoops->pushHandler(function($e) {
-        // echo 'Friendly error page and send an email to the developer'; //TODO!
-    // });
+	// $whoops->pushHandler(function($e) {
+		// echo 'Friendly error page and send an email to the developer'; //TODO!
+	// });
 }
 $whoops->register();
 
