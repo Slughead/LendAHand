@@ -1,120 +1,150 @@
+/**
+ * Global Reset of all HTML Elements
+ *
+ * Resetting all of our HTML Elements ensures a smoother
+ * visual transition between browsers. If you don't believe me,
+ * try temporarily commenting out this block of code, then go
+ * and look at Mozilla versus Safari, both good browsers with
+ * a good implementation of CSS. The thing is, all browser CSS
+ * defaults are different and at the end of the day if visual
+ * consistency is what we're shooting for, then we need to
+ * make sure we're resetting all spacing elements.
+ *
+ */
+html,
 body {
-    color: #777;
+  border: 0;
+  font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
-
-#layout {
-    position: relative;
-    padding-left: 0;
+div,
+span,
+object,
+iframe,
+img,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+tr,
+td,
+article,
+aside,
+canvas,
+details,
+figure,
+hgroup,
+menu,
+nav,
+footer,
+header,
+section,
+summary,
+mark,
+audio,
+video {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
-
-#layout.active #menu {
-    left: 150px;
-    width: 150px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cit,
+code,
+del,
+dfn,
+em,
+ins,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+b,
+i,
+hr,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+legend,
+label {
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
 }
-
-#layout.active .menu-link {
-    left: 150px;
+article,
+aside,
+canvas,
+figure,
+figure img,
+figcaption,
+hgroup,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  display: block;
 }
-
-.content {
-    margin: 0 auto;
-    padding: 0 2em;
-    max-width: 800px;
-    margin-bottom: 50px;
-    line-height: 1.6em;
+table {
+  border-collapse: separate;
+  border-spacing: 0;
 }
-
-.header {
-    margin: 0;
-    color: #333;
-    text-align: center;
-    padding: 2.5em 2em 0;
-    border-bottom: 1px solid #eee;
+table caption,
+table th,
+table td {
+  text-align: left;
+  vertical-align: middle;
 }
-
-.header h1 {
-    margin: 0.2em 0;
-    font-size: 3em;
-    font-weight: 300;
+a img {
+  border: 0;
 }
-
-.header h2 {
-    font-weight: 300;
-    color: #ccc;
-    padding: 0;
-    margin-top: 0;
+:focus {
+  outline: 0;
 }
-
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
 #menu {
-    margin-left: -150px;
-    width: 150px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1000; 
-    background: #191818;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
 }
-
-#menu a {
-    color: #999;
-    border: none;
-    padding: 0.6em 0 0.6em 0.6em;
+#main {
+  margin-left: 100px;
 }
-
-#menu .pure-menu,
-#menu .pure-menu ul {
-    border: none;
-    background: transparent;
-}
-
-#menu .pure-menu ul,
-#menu .pure-menu .menu-item-divided {
-    border-top: 1px solid #333;
-}
-
-#menu .pure-menu li a:hover,
-#menu .pure-menu li a:focus {
-    background: #333;
-}
-
-#menu .pure-menu-selected,
-#menu .pure-menu-heading {
-    background: #1f8dd6;
-}
-
-#menu .pure-menu-selected a {
-    color: #fff;
-}
-
-#menu .pure-menu-heading {
-    font-size: 110%;
-    color: #fff;
-    margin: 0;
-}
-
-.header,
-.content {
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-#layout {
-    padding-left: 150px; /* left col width "#menu" */
-    left: 0;
-}
-#menu {
-    left: 150px;
-}
-
-.menu-link {
-    position: fixed;
-    left: 150px;
-    display: none;
-}
-
-#layout.active .menu-link {
-    left: 150px;
+/*
+	TODO: 
+		fontawesome
+		mixins.less
+		...
+*/
+html {
+  font-size: 62.5%;
 }

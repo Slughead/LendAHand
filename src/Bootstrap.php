@@ -34,11 +34,12 @@ if ($environment === 'development') {
 	$executor = $injector->make('LendAHand\Executor');
 	$lessFolder = __DIR__ . DS . 'Less' . DS;
 	$cssFolder = __DIR__ . DS . '..' . DS . 'public' . DS . 'css' . DS;
-	$cmd = 'lessc ' . $lessFolder . 'base.less ' . $cssFolder . 'style.min.css';
-	var_dump($cmd); die;
+	$cmd = 'lessc ' . $lessFolder . 'base.less ' . $cssFolder . 'style.css';
 	// $cmd should result in something like this:
 	// lessc D:\Programming\Projects\LendAHand\src\Less\base.less D:\Programming\Projects\LendAHand\src\..\public\css\style.min.css
 	$executor->runInBg($cmd);
+	$minimizer = $injector->make('\LendAHand\CssMinimizer');
+	$minimizer->minimizeFile($cssFolder . 'style.css', $cssFolder . 'style.min.css');
 }
 
 /**

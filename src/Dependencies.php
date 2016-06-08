@@ -1,5 +1,7 @@
 <?php
 $injector = new \Auryn\Injector();
+$injector->alias('LendAHand\CssMinimizer', 'LendAHand\Components\CssMinimizer');
+$injector->share('LendAHand\CssMinimizer');
 $injector->alias('LendAHand\Executor', 'LendAHand\Components\CommandExecutor');
 $injector->share('LendAHand\Executor');
 $injector->alias('LendAHand\Environment', 'LendAHand\Components\Environment');
